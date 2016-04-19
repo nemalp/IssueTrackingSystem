@@ -20,16 +20,16 @@
                         </div>
                         <div class="form-bottom">
                             <!--TODO finish validation-->
-                            <form name="loginUserForm" ng-submit="login(loginUser)" class="login-form">
+                            <form name="loginUserForm" class="login-form" novalidate>
                                 <div class="form-group" ng-class="{ 'has-error' : loginUserForm.loginEmail.$error.required && !loginUserForm.loginEmail.$pristine } ">
                                     <label class="sr-only" for="login-email">Email</label>
-                                    <input type="email" ng-model="loginUser.loginEmail" required name="loginEmail" placeholder="Email" class="form-control" id="login-email">
+                                    <input type="email" ng-model="loginUser.email" required name="loginEmail" placeholder="Email" class="form-control" id="login-email">
                                 </div>
                                 <div class="form-group">
                                     <label class="sr-only" for="login-password">Password</label>
                                     <input type="password" ng-model="loginUser.password" name="form-password" placeholder="Password" class="form-control" id="login-password">
                                 </div>
-                                <button type="submit" ng-disabled="loginUserForm.$invalid" class="btn">Login</button>
+                                <button type="submit" ng-click="vm.login(loginUser)" ng-disabled="loginUserForm.$invalid" class="btn">Login</button>
                             </form>
                         </div>
                     </div>
@@ -62,7 +62,7 @@
                             </div>
                         </div>
                         <div class="form-bottom">
-                            <form name="registerUserForm" class="registration-form">
+                            <form name="registerUserForm" class="registration-form" novalidate>
                                 <div class="form-group" ng-class="{ 'has-error' : registerUserForm.registerEmail.$invalid && !registerUserForm.registerEmail.$pristine } ">
                                     <label class="sr-only" for="register-email">Email</label>
                                     <input type="email" ng-model="registerUser.email" name="registerEmail" required placeholder="Email" class="form-control" id="register-email">
@@ -73,7 +73,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="sr-only" for="register-password">Password</label>
-                                    <input type="password" ng-model="registerUser.password" ng-minlength="6" ng-maxlength="3" name="registerPassword" required placeholder="Password" class="form-control" id="register-password">
+                                    <input type="password" ng-model="registerUser.password" ng-minlength="6" ng-maxlength="100" name="registerPassword" required placeholder="Password" class="form-control" id="register-password">
                                     <div ng-messages="registerUserForm.registerEmail.$invalid && !registerUserForm.registerEmail.$pristine">
                                         <div ng-message="required">This field is required</div>
                                     </div>
@@ -81,8 +81,8 @@
                                 <div class="form-group">
                                         <label class="sr-only" for="confirm-password">Confirm Password</label>
                                         <input type="password" ng-model="registerUser.confirmPassword" name="confirmPassword" required placeholder="Confirm password" class="form-control" id="confirm-password">
-                                    </div>
-                                <button ng-disabled="registerUserForm.$invalid || registerUser.registerPassword != registerUser.confirmPassword"  type="submit" class="btn">Register</button>
+                                </div>
+                                <button  type="submit" ng-click="vm.register(registerUser)"  class="btn">Register</button>
                             </form>
                         </div>
                     </div>
