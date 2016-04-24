@@ -13,6 +13,7 @@
 
         vm.register = register;
         vm.login = login;
+        vm.isAuthenticated = authentication.isAuthenticated();
 
         function register(user) {
             authentication.register(user)
@@ -29,10 +30,10 @@
         function login(user) {
             authentication.login(user)
                 .then(
-                    function(res) {
-                        console.log(res);
+                    function(response) {
+                        sessionStorage['authToken'] = response.data.access_token;
                     },
-                    function(err) {
+                    function(error) {
                         console.log(err);
                     }
                 );
