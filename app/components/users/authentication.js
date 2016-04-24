@@ -11,7 +11,8 @@
         var authentication = {
             login: login,
             register: register,
-            logout: logout
+            logout: logout,
+            isAuthenticated: isAuthenticated
         };
 
         return authentication;
@@ -29,7 +30,6 @@
 
         function login(user) {
             var loginData = "grant_type=password&username=" + user.email + "&password=" + user.password;
-            console.log(loginData);
 
             return $http({
                 method: 'POST',
@@ -40,6 +40,10 @@
         }
 
         function logout() {}
+
+        function isAuthenticated() {
+            return sessionStorage['authToken'] !== undefined;
+        }
     }
 
 }());
