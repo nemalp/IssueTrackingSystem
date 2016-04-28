@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('issueTrackingSystem.users.authentication', [])
+        .module('app.users.authentication', [])
         .factory('authentication', authentication);
 
     authentication.$inject = ['$http', 'BASE_URL'];

@@ -1,7 +1,7 @@
 (function() {
     'use strict';
 
-    angular.module('issueTrackingSystem.home', [])
+    angular.module('app.home', [])
         .config(config)
         .controller('HomeController', HomeController);
 
@@ -42,7 +42,7 @@
 
     function config($routeProvider) {
         $routeProvider.when('/', {
-            templateUrl: 'app/components/home/home-view.html',
+            templateUrl: 'app/home/home.html',
             controllerAs: 'vm',
             controller: 'HomeController'
         });
