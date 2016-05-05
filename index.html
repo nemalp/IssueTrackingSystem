@@ -24,14 +24,25 @@
     <script src="assets/bower_components/angular-messages/angular-messages.js"></script>
 </head>
 <body>
-    <div class="container">
+    <div>
         <ng-view></ng-view>
     </div>
     <script src="assets/js/jquery.backstretch.js"></script>
     <script src="assets/js/scripts.js"></script>
     <script src="assets/bower_components/angular-route/angular-route.js"></script>
-    <script src="app/app.js"></script>
-    <script src="app/users/authentication.js"></script>
+    <script src="assets/bower_components/angular-smart-table/dist/smart-table.min.js"></script>
+
+    <script src="app/app.module.js"></script>
+
+    <!-- home -->
+    <script src="app/home/home.module.js"></script>
+    <script src="app/home/home.service.js"></script>
     <script src="app/home/home.controller.js"></script>
+    <script src="app/home/home.directives.js"></script>
+
+    <!-- users -->
+    <script src="app/users/users.module.js"></script>
+    <script src="app/users/authentication.service.js"></script>
+    <script src="app/users/users.service.js"></script>
 </body>
 </html>
