@@ -5,7 +5,7 @@
         'ngRoute',
         'ngMessages',
         'app.home',
-        'app.users.authentication'
+        'app.users'
         ])
         .config(config)
         .constant('BASE_URL', 'http://softuni-issue-tracker.azurewebsites.net/');
