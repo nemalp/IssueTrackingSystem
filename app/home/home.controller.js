@@ -12,7 +12,7 @@
         var vm = this;
 
         vm.issuesParams = {
-            pageSize: 10,
+            pageSize: 100,
             pageNumber: 1
         };
 
@@ -79,11 +79,9 @@
                 .then(
                     function success(response) {
                         vm.userIssues = response.data.Issues;
-                        vm.showIssuesPagination = response.data.TotalPages > 1;
-                        vm.issuesCount = response.data.TotalPages * vm.issuesParams.pageSize;
                     },
                     function error(err) {
-                        notifyService.showError('Cannot load issues at the moment', err);
+                        console.log(err);
                     }
                 )
         }
