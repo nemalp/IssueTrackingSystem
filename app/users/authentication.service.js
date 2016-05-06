@@ -30,8 +30,7 @@
         }
 
         function login(user) {
-            var loginData = "grant_type=password&username=" + user.email + "&password=" + user.password,
-                deferred = $q.defer();
+            var loginData = "grant_type=password&username=" + user.email + "&password=" + user.password;
 
             return $http({
                 method: 'POST',
