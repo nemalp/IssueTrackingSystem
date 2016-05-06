@@ -95,9 +95,9 @@
     <div ng-header></div>
     <div class="container">
         <div class="col-md-4">
-            <div ng-if="vm.isAdmin()">
+            <div ng-if="vm.isAdmin()" ng-controller="ProjectsContoller as project">
                 <a href="#/projects/add"><button type="button" class="btn btn-lg btn-success">Add new project</button></a>
-                <a href="#/projects" class="btn btn-lg btn-success" ng-click="getAllProjects()">All projects</a>
+                <a href="#/projects" class="btn btn-lg btn-success" ng-click="project.getAllProjects()">All projects</a>
             </div>
         </div>
         <div class="col-md-8">
@@ -119,11 +119,14 @@
                             <td>{{issue.DueDate | date: 'medium'}}</td>
                         </tr>
                     </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="5" class="text-right">
+                                <div st-pagination="" st-items-by-page="5" st-displayed-pages="vm.issuesParams.pageSize"></div>
+                            </td>
+                        </tr>
+                    </tfoot>
                 </table>
-                <pagination total-items="userIssuesCount" ng-model="issuesParams.pageNumber"
-                items-per-page="issuesParams.pageSize" ng-change="getUserIssues()"
-                max-size="9" boundary-links="true" class="paging">
-                </pagination>
             </div>
             <div ng-if="userIssues.length === 0">
                 <h3>You have no assigned issues.</h3>
