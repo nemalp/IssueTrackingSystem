@@ -12,18 +12,18 @@
         var vm = this;
 
         vm.issuesParams = {
-            pageSize: 100,
+            pageSize: 5,
             pageNumber: 1
         };
 
         vm.register = register;
         vm.login = login;
-        vm.logout = logout;
         vm.isAuthenticated = authentication.isAuthenticated();
         vm.isAdmin = authentication.isAdmin;
+        vm.getUserIssues = getUserIssues;
 
         if(vm.isAuthenticated) {
-            vm.getUserIssues = getUserIssues();
+            getUserIssues();
         }
 
         function register(user) {
@@ -61,24 +61,12 @@
                 );
         }
 
-        function logout() {
-            authentication.logout()
-            .then(
-                function() {
-                    sessionStorage.clear();
-                    $location.path('/shouldBeChanged');
-                },
-                function(error) {
-                    console.log(error);
-                }
-            );
-        }
-
         function getUserIssues() {
             homeService.getUserIssues(vm.issuesParams)
                 .then(
                     function success(response) {
                         vm.userIssues = response.data.Issues;
+                        vm.issuesCount = response.data.TotalPages * vm.issuesParams.pageSize;
                     },
                     function error(err) {
                         console.log(err);
