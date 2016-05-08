@@ -30,8 +30,7 @@
             authentication.register(user)
                 .then(
                     function(res) {
-                        vm.login({ username: user.username, password: user.password });
-                        $location.path('/shouldBeChanged');
+                        vm.login(user);
                     },
                     function(err) {
                         console.log(err);
@@ -53,7 +52,7 @@
                                 console.log(error);
                             }
                         );
-                        $location.path('/shouldBeChanged');
+                        $location.path('/login');
                     },
                     function(error) {
                         console.log(error);
