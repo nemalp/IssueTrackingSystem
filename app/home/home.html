@@ -3,7 +3,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-8 col-sm-offset-2 text">
-                    <h1>Issue Tracking System</h1>
+                    <h1 class="welcome-heading">Issue Tracking System</h1>
                 </div>
             </div>
             <div class="row">
@@ -92,15 +92,15 @@
     </div>
 </div>
 <div ng-if="vm.isAuthenticated" style="color: white;">
-    <div ng-header></div>
+    <!-- <div ng&#45;header></div> -->
     <div class="container">
-        <div class="col-md-4">
-            <div ng-if="vm.isAdmin()" ng-controller="ProjectsContoller as project">
-                <a href="#/projects/add"><button type="button" class="btn btn-lg btn-success">Add new project</button></a>
-                <a href="#/projects" class="btn btn-lg btn-success" ng-click="project.getAllProjects()">All projects</a>
+        <div class="col-xs-12 row-buttons">
+            <div ng-if="vm.isAdmin()">
+                <a href="#/projects/add" class="btn btn-lg btn-success">Add new project</a>
+                <a href="#/projects" class="btn btn-lg btn-success">All projects</a>
             </div>
         </div>
-        <div class="col-md-8">
+        <div class="col-xs-12">
             <div ng-if="vm.userIssues.length !== 0">
                 <table class="table" st-table="vm.userIssues">
                     <thead>
@@ -119,15 +119,16 @@
                             <td>{{issue.DueDate | date: 'medium'}}</td>
                         </tr>
                     </tbody>
-                    <tfoot>
-                        <tr>
-                            <td colspan="5" class="text-right">
-                                <div st-pagination="" st-items-by-page="5" st-displayed-pages="vm.issuesParams.pageSize"></div>
-                            </td>
-                        </tr>
-                    </tfoot>
                 </table>
-            </div>
+                <uib-pagination
+                    total-items="vm.issuesCount"
+                    items-per-page="vm.issuesParams.pageSize"
+                    ng-change="vm.getUserIssues()"
+                    ng-model="vm.issuesParams.pageNumber"
+                    max-size="9"
+                    boundary-link-numbers="true" rotate="false">
+                </uib-pagination>
+                            </div>
             <div ng-if="userIssues.length === 0">
                 <h3>You have no assigned issues.</h3>
             </div>
