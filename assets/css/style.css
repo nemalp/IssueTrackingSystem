@@ -15,6 +15,10 @@ a, a:hover, a:focus {
     -o-transition: all .3s; -moz-transition: all .3s; -webkit-transition: all .3s; -ms-transition: all .3s; transition: all .3s;
 }
 
+h1.welcome-heading {
+    text-align: center;
+}
+
 h1, h2 {
     margin-top: 10px;
     font-size: 38px;
@@ -208,3 +212,31 @@ footer a:hover, footer a:focus { color: #fff; border-bottom: 1px dotted #fff; }
     h1, h2 { font-size: 32px; }
 }
 
+.container {
+    color: white;
+}
+
+.row-buttons {
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+
+.color-cyan {
+    color: cyan;
+}
+
+.no-padding {
+    padding: 0;
+}
+
+.form-top p {
+    color: #888;
+}
+
+.add-btn {
+    background: #5cb85c !important;
+}
+
+nav {
+    border-radius: 0 !important;
+}
