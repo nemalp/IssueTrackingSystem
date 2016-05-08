@@ -1,23 +1,26 @@
-<div class="page-header">
-    <h2>Projects</h2>
-</div>
-<div class="jumbotron container">
+<div class="container">
+    <h2 class="color-cyan">Projects</h2>
     <table class="table">
         <thead>
             <tr>
                 <th>Project name</th>
-                <th>View project</th>
+                <th class="text-center">View project</th>
             </tr>
         </thead>
         <tbody>
             <tr ng-repeat="project in vm.allProjects">
                 <td>{{project.Name}}</td>
-                <td><a href="#projects/{{project.Id}}" class="btn btn-default" role="button">View</a></td>
+                <td class="text-center"><a href="#projects/{{project.Id}}" class="btn btn-default" role="button">View</a></td>
             </tr>
         </tbody>
-        <pagination total-items="100" ng-model="1"
-            items-per-page="5" ng-change="getAllProjects()"
-            max-size="9" boundary-links="true" class="paging">
-        </pagination>
     </table>
+    <uib-pagination
+        total-items="vm.projectsCount"
+        items-per-page="vm.projectsParams.pageSize"
+        ng-change="vm.getAllProjects()"
+        ng-model="vm.projectsParams.pageNumber"
+        max-size="9"
+        boundary-link-numbers="true" rotate="false">
+    </uib-pagination>
+
 </div>
