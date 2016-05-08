@@ -1,5 +1,9 @@
 (function () {
     'use strict';
 
-    angular.module('app.projects', ['ui.bootstrap.pagination']);
+    angular.module('app.projects', [
+        'ngAnimate',
+        'ui.bootstrap',
+        'kendo.directives'
+    ]);
 }());
