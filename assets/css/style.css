@@ -240,3 +240,7 @@ footer a:hover, footer a:focus { color: #fff; border-bottom: 1px dotted #fff; }
 nav {
     border-radius: 0 !important;
 }
+
+.comment-text {
+    color: black;
+}

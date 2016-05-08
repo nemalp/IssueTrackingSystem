@@ -5,15 +5,16 @@
         .module('app.users')
         .factory('authentication', authentication);
 
-    authentication.$inject = ['$http', '$q', 'BASE_URL'];
+    authentication.$inject = ['$http', '$q', 'BASE_URL', 'usersService'];
 
-    function authentication($http, $q, BASE_URL) {
+    function authentication($http, $q, BASE_URL, usersService) {
         var authentication = {
             login: login,
             register: register,
             logout: logout,
             isAdmin: isAdmin,
-            isAuthenticated: isAuthenticated
+            isAuthenticated: isAuthenticated,
+            changePassword: changePassword
         };
 
         return authentication;
@@ -61,6 +62,20 @@
 
         function isAuthenticated() {
             return sessionStorage['authToken'] != undefined;
+        }
+
+        function changePassword(user) {
+            var currentUser = sessionStorage.authToken,
+                data = 'OldPassword=' + user.oldPassword + '&NewPassword=' + user.newPassword + '&ConfirmPassword=' + user.newPasswordConfirm;
+            return $http({
+                method: 'POST',
+                url: BASE_URL + 'api/Account/ChangePassword',
+                data: data,
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'Authorization': 'Bearer ' + currentUser
+                }
+            });
         }
     }
 

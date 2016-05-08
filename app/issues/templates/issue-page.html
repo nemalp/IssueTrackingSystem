@@ -1,0 +1,29 @@
+<div class="container">
+    <h2 class="color-cyan">Issue page</h2>
+    <div id="issue-info">
+        <div class="col-md-6">
+            <span class="key"><strong>{{vm.currentIssue.IssueKey}}</strong></span>
+            <a href="#projects/{{vm.currentIssue.Project.Id}}" class="btn btn-success" role="button">Back to project</a>
+            <p><strong>Title: </strong>{{vm.currentIssue.Title}}</p>
+            <p><strong>Description: </strong>{{vm.currentIssue.Description}}</p>
+            <p><strong>AssigneeId </strong>(current Id {{vm.currentIssue.Assignee.Id}}) {{vm.currentIssue.Assignee.Username}}</p>
+            <p><strong>PriorityId </strong>(current Id {{vm.currentIssue.Priority.Id}}) {{vm.currentIssue.Priority.Name}}</p>
+            <p><strong>DueDate: </strong>{{vm.currentIssue.DueDate | date}}</p>
+            <p>Author: {{vm.currentIssue.Author.Username}}</p>
+            <p>Project: {{vm.currentIssue.Project.Name}}</p>
+            <p>Status: {{vm.currentIssue.Status.Name}}</p>
+            <p>Labels: {{vm.currentIssueLabels.join(', ')}}</p>
+        </div>
+        <div class="col-md-6">
+            <div ng-if="vm.issueComments.length !== 0">
+                <h4>Comments:</h4>
+                <ul class="list-group comments">
+                    <li class="list-group-item" ng-repeat="comment in vm.issueComments">
+                        <h4 class="list-group-item-heading list-group-item-info">{{comment.Author.Username}} - {{comment.CreatedOn | date}}</h4>
+                        <p class="comment-text">{{comment.Text}}</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
